@@ -78,13 +78,10 @@
 
                 <div class="hero-footer">
                     <div class="hero-actions">
-                        <a href="#projects" class="btn btn-cyan"><span class="icon">▶</span> VIEW WORK</a>
-                        <a href="#contact" class="btn btn-outline"><span class="icon">+</span> GET IN TOUCH</a>
-                        <a href="#" class="btn btn-outline figma-btn">
-                            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 57'><path fill='%23F24E1E' d='M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z'/><path fill='%23A259FF' d='M0 47.5A9.5 9.5 0 0 1 9.5 38H19v19H9.5A9.5 9.5 0 0 1 0 47.5z'/><path fill='%231ABCFE' d='M19 47.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z'/><path fill='%230ACF83' d='M0 9.5A9.5 9.5 0 0 1 9.5 0H19v19H9.5A9.5 9.5 0 0 1 0 9.5z'/><path fill='%23FF7262' d='M0 28.5A9.5 9.5 0 0 1 9.5 19H19v19H9.5A9.5 9.5 0 0 1 0 28.5z'/></svg>"
-                                alt="Figma" class="figma-icon">
-                            FIGMA COMMUNITY
-                        </a>
+                        <a href="https://www.figma.com/@eeshika" target="_blank" class="btn btn-cyan hover-reveal"
+                            data-hover-img="assests\figma.png"><span class="icon">▶</span> VIEW WORK</a>
+                        <a href="mailto:kashyapeeshika@gmail.com" class="btn btn-outline btn-contact"><span
+                                class="icon icon-plus">+</span><span class="icon icon-mail">✉</span> GET IN TOUCH</a>
                     </div>
 
                     <div class="hero-meta">
@@ -132,7 +129,7 @@
 
             <div class="projects-list">
                 <!-- Project 1 -->
-                <div class="project-card">
+                <div class="project-card hover-reveal" data-hover-img="assests\ui.png">
                     <div class="accent-line orange"></div>
                     <div class="proj-num">01</div>
                     <div class="proj-info">
@@ -148,11 +145,12 @@
                         <div class="pm-row"><span class="pm-label">Status</span><span
                                 class="pm-val text-green">Published ✔</span></div>
                     </div>
-                    <a href="#" class="proj-link">↗</a>
+                    <a href="https://www.figma.com/community/file/1446900097991889403/echo-chat-app-ui-kit?q_id=677f393c-2598-4084-b258-98e8705e3d60"
+                        class="proj-link">↗</a>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card">
+                <div class="project-card hover-reveal" data-hover-img="assests\dashboard.png">
                     <div class="accent-line green"></div>
                     <div class="proj-num">02</div>
                     <div class="proj-info">
@@ -172,7 +170,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="project-card hover-reveal" data-hover-img="assests\realme.png">
                     <div class="accent-line purple"></div>
                     <div class="proj-num">03</div>
                     <div class="proj-info">
@@ -192,7 +190,7 @@
                 </div>
 
                 <!-- Project 4 -->
-                <div class="project-card">
+                <div class="project-card hover-reveal" data-hover-img="assests\portfolio.png">
                     <div class="accent-line pink"></div>
                     <div class="proj-num">04</div>
                     <div class="proj-info">
@@ -212,7 +210,7 @@
                 </div>
 
                 <!-- Project 5 -->
-                <div class="project-card">
+                <div class="project-card hover-reveal" data-hover-img="assests\design.jpg">
                     <div class="accent-line orange-light"></div>
                     <div class="proj-num">05</div>
                     <div class="proj-info">
@@ -225,8 +223,12 @@
                         <div class="pm-row"><span class="pm-label">Tool</span><span class="pm-val">Figma</span></div>
                         <div class="pm-row"><span class="pm-label">Type</span><span class="pm-val">Design
                                 Infrastructure</span></div>
-                        <div class="pm-row"><span class="pm-label">Status</span><span
-                                class="pm-val text-green">Published ✔</span></div>
+                        <div class="pm-row">
+                            <span class="pm-label">Status</span>
+                            <span class="pm-val text-green">
+                                Published ✔
+                            </span>
+                        </div>
                     </div>
                     <a href="#" class="proj-link">↗</a>
                 </div>
@@ -329,42 +331,122 @@
                         <div class="progress-item">
                             <span class="pi-label">Figma</span>
                             <div class="pi-bar-track">
-                                <div class="pi-bar-fill fill-blue" style="width: 95%;"></div>
+                                <svg width="100%" height="100%" style="display:block">
+                                    <defs>
+                                        <pattern id="p-figma" width="8" height="8" patternTransform="rotate(45)"
+                                            patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="0" y2="8" stroke="var(--blue)" stroke-width="4" />
+                                            <animateTransform attributeName="patternTransform" type="translate" from="0"
+                                                to="8" dur="0.5s" repeatCount="indefinite" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="0%" height="100%" fill="url(#p-figma)">
+                                        <animate attributeName="width" from="0%" to="95%" dur="1.5s" fill="freeze"
+                                            calcMode="spline" keySplines="0.2 0 0.2 1" keyTimes="0;1" />
+                                    </rect>
+                                </svg>
                             </div>
                             <span class="pi-val">95%</span>
                         </div>
                         <div class="progress-item">
                             <span class="pi-label">Framer</span>
                             <div class="pi-bar-track">
-                                <div class="pi-bar-fill fill-cyan" style="width: 80%;"></div>
+                                <svg width="100%" height="100%" style="display:block">
+                                    <defs>
+                                        <pattern id="p-framer" width="8" height="8" patternTransform="rotate(45)"
+                                            patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="0" y2="8" stroke="var(--cyan)" stroke-width="4" />
+                                            <animateTransform attributeName="patternTransform" type="translate" from="0"
+                                                to="8" dur="0.5s" repeatCount="indefinite" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="0%" height="100%" fill="url(#p-framer)">
+                                        <animate attributeName="width" from="0%" to="80%" dur="1.5s" fill="freeze"
+                                            calcMode="spline" keySplines="0.2 0 0.2 1" keyTimes="0;1" />
+                                    </rect>
+                                </svg>
                             </div>
                             <span class="pi-val">80%</span>
                         </div>
                         <div class="progress-item">
                             <span class="pi-label">HTML & CSS</span>
                             <div class="pi-bar-track">
-                                <div class="pi-bar-fill fill-green" style="width: 90%;"></div>
+                                <svg width="100%" height="100%" style="display:block">
+                                    <defs>
+                                        <pattern id="p-html" width="8" height="8" patternTransform="rotate(45)"
+                                            patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="0" y2="8" stroke="var(--green)" stroke-width="4" />
+                                            <animateTransform attributeName="patternTransform" type="translate" from="0"
+                                                to="8" dur="0.5s" repeatCount="indefinite" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="0%" height="100%" fill="url(#p-html)">
+                                        <animate attributeName="width" from="0%" to="90%" dur="1.5s" fill="freeze"
+                                            calcMode="spline" keySplines="0.2 0 0.2 1" keyTimes="0;1" />
+                                    </rect>
+                                </svg>
                             </div>
                             <span class="pi-val">90%</span>
                         </div>
                         <div class="progress-item">
                             <span class="pi-label">JavaScript</span>
                             <div class="pi-bar-track">
-                                <div class="pi-bar-fill fill-yellow" style="width: 75%;"></div>
+                                <svg width="100%" height="100%" style="display:block">
+                                    <defs>
+                                        <pattern id="p-js" width="8" height="8" patternTransform="rotate(45)"
+                                            patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="0" y2="8" stroke="var(--yellow)" stroke-width="4" />
+                                            <animateTransform attributeName="patternTransform" type="translate" from="0"
+                                                to="8" dur="0.5s" repeatCount="indefinite" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="0%" height="100%" fill="url(#p-js)">
+                                        <animate attributeName="width" from="0%" to="75%" dur="1.5s" fill="freeze"
+                                            calcMode="spline" keySplines="0.2 0 0.2 1" keyTimes="0;1" />
+                                    </rect>
+                                </svg>
                             </div>
                             <span class="pi-val">75%</span>
                         </div>
                         <div class="progress-item">
                             <span class="pi-label">React js</span>
                             <div class="pi-bar-track">
-                                <div class="pi-bar-fill fill-yellow-green" style="width: 70%;"></div>
+                                <svg width="100%" height="100%" style="display:block">
+                                    <defs>
+                                        <pattern id="p-react" width="8" height="8" patternTransform="rotate(45)"
+                                            patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="0" y2="8" stroke="var(--yellow-green)"
+                                                stroke-width="4" />
+                                            <animateTransform attributeName="patternTransform" type="translate" from="0"
+                                                to="8" dur="0.5s" repeatCount="indefinite" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="0%" height="100%" fill="url(#p-react)">
+                                        <animate attributeName="width" from="0%" to="70%" dur="1.5s" fill="freeze"
+                                            calcMode="spline" keySplines="0.2 0 0.2 1" keyTimes="0;1" />
+                                    </rect>
+                                </svg>
                             </div>
                             <span class="pi-val">70%</span>
                         </div>
                         <div class="progress-item">
                             <span class="pi-label">C++</span>
                             <div class="pi-bar-track">
-                                <div class="pi-bar-fill fill-green-dark" style="width: 65%;"></div>
+                                <svg width="100%" height="100%" style="display:block">
+                                    <defs>
+                                        <pattern id="p-cpp" width="8" height="8" patternTransform="rotate(45)"
+                                            patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="0" y2="8" stroke="var(--green-dark)"
+                                                stroke-width="4" />
+                                            <animateTransform attributeName="patternTransform" type="translate" from="0"
+                                                to="8" dur="0.5s" repeatCount="indefinite" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="0%" height="100%" fill="url(#p-cpp)">
+                                        <animate attributeName="width" from="0%" to="65%" dur="1.5s" fill="freeze"
+                                            calcMode="spline" keySplines="0.2 0 0.2 1" keyTimes="0;1" />
+                                    </rect>
+                                </svg>
                             </div>
                             <span class="pi-val">65%</span>
                         </div>
@@ -383,7 +465,9 @@
                         <span class="st-tag st-green">BCA GRADUATE</span>
                     </div>
                     <div class="tag-row">
-                        <span class="st-tag st-yellow">GOOGLE UX CERTIFICATE</span>
+                        <span class="st-tag st-yellow hover-reveal"
+                            data-hover-img="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop">GOOGLE
+                            UX CERTIFICATE</span>
                     </div>
                     <div class="tag-row">
                         <span class="st-tag st-purple">AVIONICS ENGINEERING</span>
@@ -398,104 +482,185 @@
         <section id="about" class="sheet">
             <div class="sheet-label-top">SHEET 05 / ABOUT</div>
 
-            <div class="about-content">
-                <div class="about-left">
-                    <div class="blueprint-box section-title-box">
-                        <div class="dim-line top-dim">
-                            <div class="dim-text">PROFILE</div>
-                        </div>
-                        <div class="dim-line left-dim"></div>
-                        <div class="dim-line right-dim"></div>
-                        <div class="dim-line bottom-dim"></div>
-                        <h3>ABOUT</h3>
-                        <h3 class="outline-text">ME</h3>
-                        <div class="corner-dot tl"></div>
-                        <div class="corner-dot tr"></div>
-                        <div class="corner-dot bl"></div>
-                        <div class="corner-dot br"></div>
+            <div class="section-header">
+                <div class="blueprint-box section-title-box">
+                    <div class="dim-line top-dim">
+                        <div class="dim-text">PROFILE</div>
                     </div>
+                    <div class="dim-line left-dim"></div>
+                    <div class="dim-line right-dim"></div>
+                    <div class="dim-line bottom-dim"></div>
+                    <h3>ABOUT</h3>
+                    <h3 class="outline-text">ME</h3>
+                    <div class="corner-dot tl"></div>
+                    <div class="corner-dot tr"></div>
+                    <div class="corner-dot bl"></div>
+                    <div class="corner-dot br"></div>
+                </div>
 
-                    <div class="radar-container">
-                        <div class="radar-circle rc1"></div>
-                        <div class="radar-circle rc2"></div>
-                        <div class="radar-circle rc3"></div>
-                        <div class="radar-line hl"></div>
-                        <div class="radar-line vl"></div>
-                        <div class="radar-center">
-                            <span class="text-cyan">UI/UX</span><br>DESIGNER
-                        </div>
-                        <div class="radar-scan"></div>
+                <div class="header-desc" style="max-width: 350px; text-align: left;">
+                    The full picture background, experience, and what drives my work.
+                </div>
+            </div>
+
+            <div class="about-main-box">
+                <div class="about-left">
+                    <div class="entity-box">
+                        <div class="entity-line">ENTITY : EESHIKA KASHYAP // DESIGNER_01</div>
+                        <div class="entity-divider"></div>
+                    </div>
+                    <div class="radar-container hover-reveal">
+                        <svg class="radar-svg" viewBox="0 0 360 360" aria-label="radar diagram">
+                            <defs>
+                                <style>
+                                    .ring {
+                                        fill: none;
+                                        stroke: var(--cyan);
+                                        stroke-width: 1
+                                    }
+
+                                    .center {
+                                        fill: var(--cyan);
+                                    }
+
+                                    .lbl-rect {
+                                        fill: none;
+                                        stroke: var(--cyan);
+                                        stroke-width: 1
+                                    }
+
+                                    .lbl-text {
+                                        fill: var(--cyan);
+                                        font-family: var(--font-mono);
+                                        font-size: 12px
+                                    }
+
+                                    .center-text {
+                                        fill: var(--bg);
+                                        font-family: var(--font-mono);
+                                        font-size: 11px;
+                                        font-weight: 700
+                                    }
+                                </style>
+                            </defs>
+
+                            <!-- concentric rings -->
+                            <circle class="ring" cx="180" cy="180" r="130" />
+                            <circle class="ring" cx="180" cy="180" r="90" />
+                            <circle class="ring" cx="180" cy="180" r="50" />
+
+                            <!-- center core -->
+                            <circle class="center" cx="180" cy="180" r="28" />
+                            <text x="180" y="175" text-anchor="middle" class="center-text">CORE</text>
+                            <text x="180" y="189" text-anchor="middle" class="center-text">APPROACH</text>
+
+                            <!-- label boxes -->
+                            <!-- DESIGN (top) -->
+                            <rect class="lbl-rect" x="140" y="28" width="80" height="22" rx="4" ry="4" />
+                            <text x="180" y="43" text-anchor="middle" class="lbl-text">DESIGN</text>
+
+                            <!-- CODE (right) -->
+                            <rect class="lbl-rect" x="312" y="160" width="36" height="22" rx="4" ry="4" />
+                            <text x="330" y="175" text-anchor="middle" class="lbl-text">CODE</text>
+
+                            <!-- RESEARCH (bottom) -->
+                            <rect class="lbl-rect" x="140" y="310" width="80" height="22" rx="4" ry="4" />
+                            <text x="180" y="325" text-anchor="middle" class="lbl-text">RESEARCH</text>
+
+                            <!-- SYSTEMS (left) -->
+                            <rect class="lbl-rect" x="12" y="160" width="60" height="22" rx="4" ry="4" />
+                            <text x="42" y="175" text-anchor="middle" class="lbl-text">SYSTEMS</text>
+                        </svg>
                     </div>
 
                     <table class="about-table">
                         <tr>
-                            <td>Year</td>
-                            <td>2021-Present</td>
+                            <td>NAME</td>
+                            <td>Eeshika Kashyap</td>
                         </tr>
                         <tr>
-                            <td>Role</td>
-                            <td class="text-cyan">UI/UX Designer</td>
+                            <td>ROLE</td>
+                            <td class="text-cyan">UI/UX + Product Designer</td>
                         </tr>
                         <tr>
-                            <td>Loc</td>
-                            <td>Remote / India</td>
+                            <td>LOCATION</td>
+                            <td>Meerut, UP, India</td>
                         </tr>
                         <tr>
-                            <td>Mail</td>
-                            <td>eeshika@example.com</td>
+                            <td>REMOTE</td>
+                            <td class="text-green">Available worldwide</td>
                         </tr>
                         <tr>
-                            <td>Stat</td>
-                            <td>Available</td>
+                            <td>STATUS</td>
+                            <td class="text-green">Open to work</td>
                         </tr>
                         <tr>
-                            <td>Edu</td>
-                            <td>MCA Candidate</td>
+                            <td>EDUCATION</td>
+                            <td>MCA (Perusing)</td>
                         </tr>
                         <tr>
-                            <td>Deg</td>
-                            <td>BCA Graduate</td>
+                            <td>BACKGROUND</td>
+                            <td>BCA + Design + Avionics</td>
                         </tr>
                         <tr>
-                            <td>Cert</td>
-                            <td class="text-yellow">Google UX Certificate</td>
+                            <td>PRODUCTS</td>
+                            <td class="text-cyan">5 Published on Figma</td>
                         </tr>
                         <tr>
-                            <td>Prev</td>
-                            <td class="text-purple">Avionics Engineering</td>
+                            <td>CERTIFICATE</td>
+                            <td>Google UX Cert.</td>
+                        </tr>
+                        <tr>
+                            <td>EMAIL</td>
+                            <td>kashyapeeshika@gmail.com</td>
                         </tr>
                     </table>
                 </div>
 
                 <div class="about-right">
-                    <h2 class="about-hero-text">Designer<br><span class="text-cyan">Who also</span><br>Think.</h2>
+
                     <p class="about-desc">
-                        I am a passionate UI/UX Designer with a knack for creating intuitive, user-centric, and visually
-                        appealing digital experiences. I believe design is not just about making things look good, but
-                        also about solving complex problems.
+                        I started in Avionics engineering - a field where precision, redundancy, and systems thinking
+                        aren’t optional. That background rewired how I approach design. When I look at an interface, I
+                        see a system: inputs, outputs, failure states, and edge cases.
                     </p>
                     <p class="about-desc">
-                        My approach combines analytical thinking with creative design, ensuring that every interface I
-                        build is both functional and beautiful.
+                        I moved into UI/UX design through a BCA and now MCA. I’m someone who understands both
+                        disciplines from first principles. I can prototype in Figma, built in React, and deploy in
+                        Framer.
                     </p>
                     <p class="about-desc">
-                        I am constantly learning and exploring new tools and techniques to stay ahead in the
-                        ever-evolving field of design.
+                        My goal is simple: build products that solve real problems with clarity, precision, and
+                        intention.
                     </p>
 
-                    <div class="exp-list">
+                    <div class="exp-list exp-timeline">
                         <div class="exp-item">
-                            <div class="exp-year text-cyan">2023 - Present</div>
+                            <div class="exp-year text-cyan">2024 - NOW</div>
                             <div class="exp-info">
-                                <h5>UI/UX Designer @ TechNova Solutions</h5>
-                                <p>Leading product design initiatives.</p>
+                                <h5>MCA - Master of Computer Application</h5>
+                                <p>IGNOU, Noida • Pursuing</p>
                             </div>
                         </div>
                         <div class="exp-item">
-                            <div class="exp-year text-cyan">2021 - 2023</div>
+                            <div class="exp-year text-cyan">JUN - NOV<br>2024</div>
                             <div class="exp-info">
-                                <h5>Freelance Designer</h5>
-                                <p>Worked with 20+ clients globally.</p>
+                                <h5>UI/UX Designer - Internship</h5>
+                                <p>Fact Enterprise Ltd., Ghaziabad</p>
+                            </div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-year text-cyan">2024</div>
+                            <div class="exp-info">
+                                <h5>BCA - Bachelor of Computer Application</h5>
+                                <p>IGNOU, Noida • Pursuing</p>
+                            </div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-year text-cyan">2021</div>
+                            <div class="exp-info">
+                                <h5>Aircraft Maintenance Engineering - Avionics</h5>
+                                <p>Azad Institute of Aeronautics &amp; Engineering, Lucknow</p>
                             </div>
                         </div>
                     </div>
@@ -534,21 +699,21 @@
 
                 <div class="contact-right">
                     <div class="social-list">
-                        <a href="#" class="social-btn">
+                        <a href="https://www.linkedin.com/in/eeshikakashyap/" target="_blank" class="social-btn">
                             <div class="sb-left">
                                 <span class="sb-num text-cyan">01</span>
                                 <span class="sb-name">LinkedIn / eeshikakashyap</span>
                             </div>
                             <span class="sb-arrow">↗</span>
                         </a>
-                        <a href="#" class="social-btn">
+                        <a href="https://dribbble.com/eeshikadesigns" target="_blank" class="social-btn">
                             <div class="sb-left">
                                 <span class="sb-num text-cyan">02</span>
                                 <span class="sb-name">Dribbble / eeshikadesigns</span>
                             </div>
                             <span class="sb-arrow">↗</span>
                         </a>
-                        <a href="#" class="social-btn">
+                        <a href="https://twitter.com/eeshikatweets" target="_blank" class="social-btn">
                             <div class="sb-left">
                                 <span class="sb-num text-cyan">03</span>
                                 <span class="sb-name">Twitter / eeshikatweets</span>
@@ -563,6 +728,8 @@
         </section>
 
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 
