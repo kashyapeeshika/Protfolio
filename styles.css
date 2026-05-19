@@ -17,6 +17,16 @@
     --blue: #0066ff;
 
     --font-mono: 'Share Tech Mono', monospace;
+    --font-heading: 'Teko', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
 }
 
 * {
@@ -235,6 +245,46 @@ a {
 
 .btn {
     min-width: 180px;
+}
+
+
+/* HERO GRID BACKGROUND */
+.hero-section {
+    overflow: hidden;
+    position: relative;
+    cursor: none; /* Hide default cursor if they want a custom one in hero */
+}
+
+.hero-grid-lines {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: 
+        linear-gradient(rgba(0, 229, 255, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.3) 1px, transparent 1px),
+        linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    z-index: -1;
+    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%);
+}
+
+/* Custom Cursor */
+.ball {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background-color: var(--cyan);
+    pointer-events: none;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--cyan);
 }
 
 
@@ -776,7 +826,7 @@ a {
         border-right: none;
         border-bottom: 1px solid var(--cyan);
     }
-    
+
     .about-right {
         padding: 30px;
     }

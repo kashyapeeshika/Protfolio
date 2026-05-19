@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
@@ -50,6 +50,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // GSAP Animations for "dim-line" elements (stroke reveal effect)
     gsap.registerPlugin(ScrollTrigger);
 
+    // Hero Grid and Mouse Follower Animation
+    const heroSection = document.querySelector('.hero-section');
+    const ball = document.querySelector('.ball');
+    const heroGridLines = document.querySelector('.hero-grid-lines');
+
+    if (heroSection && ball && heroGridLines) {
+        // Initial setup for the ball
+        gsap.set(ball, { xPercent: -50, yPercent: -50, opacity: 0, scale: 0 });
+        
+        let xTo = gsap.quickTo(ball, "x", {duration: 0.4, ease: "power3"}),
+            yTo = gsap.quickTo(ball, "y", {duration: 0.4, ease: "power3"});
+
+        // Grid parallax setup
+        let gridXTo = gsap.quickTo(heroGridLines, "x", {duration: 0.8, ease: "power2.out"}),
+            gridYTo = gsap.quickTo(heroGridLines, "y", {duration: 0.8, ease: "power2.out"});
+
+        heroSection.addEventListener("mousemove", e => {
+            const rect = heroSection.getBoundingClientRect();
+            // Mouse position relative to the hero section
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            xTo(x);
+            yTo(y);
+
+            // Calculate parallax for grid (subtle movement opposite to mouse)
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const moveX = (x - centerX) * -0.05; 
+            const moveY = (y - centerY) * -0.05;
+
+            gridXTo(moveX);
+            gridYTo(moveY);
+        });
+
+        // Show/hide ball when entering/leaving hero section
+        heroSection.addEventListener("mouseenter", () => {
+            gsap.to(ball, {opacity: 1, scale: 1, duration: 0.3});
+        });
+        
+        heroSection.addEventListener("mouseleave", () => {
+            gsap.to(ball, {opacity: 0, scale: 0, duration: 0.3});
+            // Reset grid to center
+            gridXTo(0);
+            gridYTo(0);
+        });
+    }
+
     // Animate the main section containers (.sheet)
     gsap.utils.toArray('.sheet').forEach(sheet => {
         const top = sheet.querySelector('.sheet-top');
@@ -67,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ease: "power2.out"
             });
         }
-        
+
         if (left && right) {
             gsap.from([left, right], {
                 scrollTrigger: { trigger: sheet, start: "top 85%" },
@@ -195,17 +243,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Radar Diagram Animation
     const radar = document.querySelector('.radar-svg');
     if (radar) {
-        gsap.fromTo(radar.querySelectorAll('.ring'), 
+        gsap.fromTo(radar.querySelectorAll('.ring'),
             { strokeDasharray: 1000, strokeDashoffset: 1000 },
-            { 
+            {
                 scrollTrigger: { trigger: radar, start: "top 85%" },
-                strokeDashoffset: 0, 
-                duration: 2, 
-                stagger: 0.3, 
-                ease: "power2.out" 
+                strokeDashoffset: 0,
+                duration: 2,
+                stagger: 0.3,
+                ease: "power2.out"
             }
         );
-        
+
         gsap.from(radar.querySelector('.center'), {
             scrollTrigger: { trigger: radar, start: "top 85%" },
             scale: 0,
@@ -214,14 +262,14 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: "elastic.out(1, 0.5)",
             delay: 0.5
         });
-        
+
         gsap.from(radar.querySelectorAll('.center-text'), {
             scrollTrigger: { trigger: radar, start: "top 85%" },
             opacity: 0,
             duration: 0.5,
             delay: 0.8
         });
-        
+
         gsap.from(radar.querySelectorAll('.lbl-rect, .lbl-text'), {
             scrollTrigger: { trigger: radar, start: "top 85%" },
             opacity: 0,
@@ -230,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
             stagger: 0.1,
             delay: 1.2
         });
-        
+
         gsap.to(radar.querySelectorAll('.ring'), {
             rotation: 360,
             transformOrigin: "50% 50%",
@@ -239,4 +287,5 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: "none"
         });
     }
+
 });
