@@ -1,0 +1,16 @@
+{
+  "name": "eeshika-portfolio",
+  "version": "1.0.0",
+  "description": "Eeshika Kashyap - UI/UX Designer Portfolio",
+  "main": "script.js",
+  "scripts": {
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": [
+    "portfolio",
+    "designer",
+    "ui/ux"
+  ],
+  "author": "Eeshika Kashyap",
+  "license": "MIT"
+}
