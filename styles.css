@@ -479,10 +479,10 @@ a {
 
 .hero-footer {
     display: flex;
-    justify-content: space-between;
     width: 100%;
     margin-top: 140px;
-    align-items: flex-end;
+    align-items: end;
+    justify-content: flex-end;
 }
 
 .hero-actions {
@@ -520,7 +520,8 @@ a {
 }
 
 .btn-outline:hover {
-    background-color: var(--cyan-dim);
+    background-color: var(--cyan);
+    color: var(--bg);
 }
 
 .figma-icon {
@@ -549,7 +550,7 @@ a {
 }
 
 .status-open {
-    color: var(--cyan);
+    color: var(--green);
 }
 
 /* SECTION HEADERS */
