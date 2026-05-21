@@ -215,14 +215,23 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(hoverImage);
 
     let isHovering = false;
-    gsap.set(hoverImage, { xPercent: -50, yPercent: -50, scale: 0.5 });
+    gsap.set(hoverImage, { xPercent: 0, yPercent: 0, scale: 0.5 });
 
     document.querySelectorAll('.hover-reveal').forEach(el => {
-        el.addEventListener('mouseenter', () => {
+        el.addEventListener('mouseenter', (event) => {
+            if (event.target.closest('.proj-link')) return;
             const imgSrc = el.getAttribute('data-hover-img');
             if (imgSrc) {
                 hoverImage.src = imgSrc;
-                gsap.to(hoverImage, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
+                const rect = el.getBoundingClientRect();
+                const offset = 18;
+                const imgWidth = 200;
+                const imgHeight = 120;
+                const x = Math.min(window.innerWidth - imgWidth - 16, Math.max(16, rect.right - imgWidth - offset));
+                const y = Math.max(16, rect.top + offset);
+
+                gsap.set(hoverImage, { width: imgWidth, height: imgHeight, xPercent: 0, yPercent: 0 });
+                gsap.to(hoverImage, { x, y, opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
                 isHovering = true;
             }
         });
@@ -232,10 +241,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.querySelectorAll('.proj-link').forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            if (isHovering) {
+                gsap.to(hoverImage, { opacity: 0, scale: 0.5, duration: 0.2, ease: "power2.out" });
+            }
+        });
+
+        link.addEventListener('mouseleave', () => {
+            const card = link.closest('.project-card');
+            if (card && card.matches(':hover')) {
+                const imgSrc = card.getAttribute('data-hover-img');
+                if (imgSrc) {
+                    const rect = card.getBoundingClientRect();
+                    const offset = 18;
+                    const imgWidth = 200;
+                    const imgHeight = 120;
+                    const x = Math.min(window.innerWidth - imgWidth - 16, Math.max(16, rect.right - imgWidth - offset));
+                    const y = Math.max(16, rect.top + offset);
+
+                    hoverImage.src = imgSrc;
+                    gsap.set(hoverImage, { width: imgWidth, height: imgHeight, xPercent: 0, yPercent: 0 });
+                    gsap.to(hoverImage, { x, y, opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
+                    isHovering = true;
+                }
+            }
+        });
+    });
+
     window.addEventListener('mousemove', (e) => {
-        if (isHovering) {
-            gsap.to(hoverImage, { x: e.clientX, y: e.clientY, duration: 0.4, ease: "power3.out" });
-        } else {
+        if (!isHovering) {
             gsap.set(hoverImage, { x: e.clientX, y: e.clientY });
         }
     });

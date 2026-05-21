@@ -15,6 +15,7 @@
     --orange: #ff6600;
     --orange-light: #ff9933;
     --blue: #0066ff;
+    --indigo: #5c6cff;
 
     --font-mono: 'Share Tech Mono', monospace;
     --font-heading: 'Teko', sans-serif;
@@ -601,7 +602,38 @@ a {
 }
 
 .project-card:hover {
-    background: var(--cyan-dim);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.92));
+}
+
+.projects-list .project-card:nth-of-type(1):hover {
+    background: linear-gradient(90deg, rgba(231, 104, 0, 0.555), rgba(0, 0, 0, 0.95));
+    border-color: transparent;
+}
+
+.projects-list .project-card:nth-of-type(2):hover {
+    background: linear-gradient(90deg, rgba(0, 255, 136, 0.45), rgba(0, 0, 0, 0.95));
+    border-color: transparent;  
+}
+
+.projects-list .project-card:nth-of-type(3):hover {
+    background: linear-gradient(90deg, rgba(92, 108, 255, 0.45), rgba(0, 0, 0, 0.95));
+    border-color: transparent;
+}
+
+.projects-list .project-card:nth-of-type(4):hover {
+    background: linear-gradient(90deg, rgba(255, 0, 204, 0.45), rgba(0, 0, 0, 0.95));
+    border-color: transparent;
+}
+
+.projects-list .project-card:nth-of-type(5):hover {
+    background: linear-gradient(90deg, rgba(255, 204, 0, 0.45), rgba(0, 0, 0, 0.95));
+    border-color: transparent;
+}
+.project-card:hover .proj-num,
+.project-card:hover .proj-tags,
+.project-card:hover .proj-title,
+.project-card:hover .proj-desc {
+    color: #ffffff;
 }
 
 .accent-line {
@@ -964,8 +996,8 @@ a {
     background: var(--cyan);
     color: var(--bg);
     border-color: var(--cyan);
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 229, 255, 0.4);
+    transform: none;
+    box-shadow: none;
 }
 
 /* PROCESS SECTION */
@@ -980,6 +1012,35 @@ a {
 .process-card {
     background-color: var(--bg);
     padding: 40px;
+}
+
+/* Hover effect for process cards - bright left, dark right */
+.process-card {
+    transition: background 0.35s ease, transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.process-card:hover {
+    background: linear-gradient(
+        360deg,
+        rgba(12, 80, 80, 0.76),
+        rgba(0, 0, 0, 1)
+    );
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6);
+
+    color: #ffffff;
+}
+
+.process-card:hover .pc-num,
+.process-card:hover .pc-title {
+    color: #000000;
+}
+
+.process-card:hover .pc-node,
+.process-card:hover .pc-desc {
+    color: #ffffff;
 }
 
 .pc-header {
@@ -1226,8 +1287,8 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    width: 320px;
-    height: 200px;
+    width: 200px;
+    height: 100px;
     object-fit: cover;
     pointer-events: none;
     opacity: 0;
