@@ -1,5 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth Scrolling for Navigation Links
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+    });
+
+    // Sync Lenis with GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger, TextPlugin);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time)=>{
+      lenis.raf(time * 1000)
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // Helper function for text reveal
+    function splitWordsToSpans(element) {
+        if (!element) return [];
+        const text = element.innerText;
+        element.innerHTML = '';
+        const items = [];
+        text.split(/\s+/).forEach((word) => {
+            if (!word.trim()) return;
+            const wordMask = document.createElement('span');
+            wordMask.className = 'reveal-mask';
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'reveal-item';
+            wordSpan.innerText = word;
+            wordMask.appendChild(wordSpan);
+            element.appendChild(wordMask);
+            
+            const space = document.createTextNode(' ');
+            element.appendChild(space);
+            items.push(wordSpan);
+        });
+        return items;
+    }
+
+    // Smooth Scrolling for Navigation Links using Lenis
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -8,10 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop,
-                    behavior: 'smooth'
-                });
+                lenis.scrollTo(targetElement);
             }
         });
     });
@@ -48,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // GSAP Animations for "dim-line" elements (stroke reveal effect)
-    gsap.registerPlugin(ScrollTrigger);
+    // Plugin registered at top.
 
     // Hero Grid and Mouse Follower Animation
     const heroSection = document.querySelector('.hero-section');
@@ -98,8 +135,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animate the main section containers (.sheet)
+    // Animate the main section containers (.sheet) and contents
     gsap.utils.toArray('.sheet').forEach(sheet => {
+        // Section overall entrance slide up
+        gsap.from(sheet, {
+            scrollTrigger: { trigger: sheet, start: "top 85%" },
+            y: 80,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out"
+        });
+
         const top = sheet.querySelector('.sheet-top');
         const bottom = sheet.querySelector('.sheet-bottom');
         const left = sheet.querySelector('.sheet-left');
@@ -134,6 +180,72 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 1,
                 delay: 0.6,
                 ease: "power2.out"
+            });
+        }
+
+        // Apply text splitting and stagger animation to headings (excluding .header-desc which has a custom hover)
+        const headers = sheet.querySelectorAll('h1, h2, h3, h4, .proj-desc, .about-desc, .contact-desc');
+        headers.forEach(header => {
+            const items = splitWordsToSpans(header);
+            if (items.length) {
+                gsap.to(items, {
+                    scrollTrigger: { trigger: sheet, start: "top 80%" },
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.02,
+                    ease: "power3.out",
+                    delay: 0.2
+                });
+            }
+        });
+
+        // Card stagger entrance
+        const cards = sheet.querySelectorAll('.project-card');
+        if (cards.length) {
+            gsap.from(cards, {
+                scrollTrigger: { trigger: sheet, start: "top 75%" },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.15,
+                ease: "power3.out",
+                delay: 0.3
+            });
+        }
+    });
+
+    // Custom hover animation for header-desc elements using TextPlugin
+    document.querySelectorAll('.header-desc').forEach(desc => {
+        const originalText = desc.innerText;
+        
+        // Initial scroll reveal for header-desc
+        gsap.from(desc, {
+            scrollTrigger: { trigger: desc.closest('.sheet'), start: "top 80%" },
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            delay: 0.5
+        });
+
+        // TextPlugin hover animation
+        // Changing to uppercase so the plugin has character changes to animate
+        const hoverTween = gsap.to(desc, {
+            duration: 0.75,
+            text: { value: originalText.toUpperCase() },
+            color: "var(--cyan)",
+            ease: "none",
+            paused: true,
+            reversed: true
+        });
+
+        const wrap = desc.closest('.section-header') || desc.closest('.sheet');
+        if(wrap) {
+            wrap.addEventListener("mouseenter", () => {
+                hoverTween.reversed() ? hoverTween.play() : hoverTween.play();
+            });
+            wrap.addEventListener("mouseleave", () => {
+                hoverTween.reverse();
             });
         }
     });
