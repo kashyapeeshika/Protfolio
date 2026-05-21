@@ -124,7 +124,8 @@ a {
 
 .btn-available:hover {
     border-color: var(--cyan);
-    color: var(--cyan);
+    background-color: var(--cyan);
+    color: var(--bg);
 }
 
 /* LAYOUT */
