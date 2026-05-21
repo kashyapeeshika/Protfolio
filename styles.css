@@ -252,7 +252,7 @@ a {
 
 /* HERO GRID BACKGROUND */
 .hero-section {
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     cursor: none; /* Hide default cursor if they want a custom one in hero */
 }
