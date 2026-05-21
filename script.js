@@ -57,23 +57,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
 
-    window.addEventListener('scroll', () => {
-        let current = '';
+    function updateActiveNav() {
+        const topOffset = 120;
+        let activeId = sections.length ? sections[0].getAttribute('id') : '';
+        let bestScore = -Infinity;
+
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - sectionHeight / 3)) {
-                current = section.getAttribute('id');
+            const rect = section.getBoundingClientRect();
+            let score;
+
+            // If section contains the topOffset point, highest score
+            if (rect.top < topOffset && rect.bottom > topOffset) {
+                score = 100000;
+            }
+            // If section is above topOffset and close, high score
+            else if (rect.top < topOffset && rect.top > topOffset - 300) {
+                score = 10000 - (topOffset - rect.top);
+            }
+            // If section just appeared below topOffset, still good score
+            else if (rect.top >= topOffset && rect.top < topOffset + 300) {
+                score = 5000 - (rect.top - topOffset);
+            }
+            // If section is far above, low score but consider it if it's still visible
+            else if (rect.bottom > 0) {
+                score = 100 - Math.abs(rect.top - topOffset) / 100;
+            }
+            // Section is completely above and not visible
+            else {
+                score = -Math.abs(rect.bottom);
+            }
+
+            if (score > bestScore) {
+                bestScore = score;
+                activeId = section.getAttribute('id');
             }
         });
 
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
+            const isActive = link.getAttribute('href') === `#${activeId}`;
+            link.classList.toggle('active', isActive);
         });
-    });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+    lenis.on('scroll', updateActiveNav);
+    window.addEventListener('resize', updateActiveNav);
+    updateActiveNav();
 
     // Inject lines into all .sheet elements for stroke reveal animation
     document.querySelectorAll('.sheet').forEach(sheet => {
